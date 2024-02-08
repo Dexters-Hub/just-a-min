@@ -4,6 +4,8 @@ import TextSection from '@/components/TextSection.vue'
 import { RouterLink } from 'vue-router'
 import { useTopic } from '@/composables/useTopic';
 
+
+
 const { topicSubtitle,
         // updateRandomTopic
       } = useTopic();
