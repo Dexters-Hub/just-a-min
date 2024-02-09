@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import TextSection from '@/components/TextSection.vue'
 // import BorderButton from '@/components/BorderButton.vue';
 import CountdownTimer from '@/components/CountdownTimer.vue';

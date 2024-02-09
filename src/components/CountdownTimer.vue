@@ -1,5 +1,5 @@
-<script setup>
-import { ref, onMounted, onUnmounted, defineProps } from 'vue';
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue';
 import useControl from '@/composables/useControl';
 
 const props = defineProps({

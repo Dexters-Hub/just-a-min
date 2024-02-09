@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import BorderButton from '@/components/BorderButton.vue';
 import TextSection from '@/components/TextSection.vue'
 import { RouterLink } from 'vue-router'
