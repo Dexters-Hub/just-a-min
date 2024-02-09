@@ -23,7 +23,6 @@ const { isPlaying, control } = useControl(
                 if (props.onCountdownEnd) {
                     props.onCountdownEnd();
                 }
-                control('restart');
             }
         } else if (controlAction === 'restart') {
             countdown.value = props.initialTime;
@@ -32,8 +31,6 @@ const { isPlaying, control } = useControl(
 );
 
 const countdown = ref(props.initialTime);
-let mediaRecorder: MediaRecorder;
-let audioChunks: BlobPart[] = [];
 
 const formatTime = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
@@ -41,41 +38,12 @@ const formatTime = (seconds: number) => {
     return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
 };
 
-const startRecording = async () => {
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    mediaRecorder = new MediaRecorder(stream);
-
-    mediaRecorder.ondataavailable = (event) => {
-        if (event.data.size > 0) {
-            audioChunks.push(event.data);
-        }
-    };
-
-    mediaRecorder.onstop = () => {
-        const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
-        console.log(audioBlob)
-        // Now you can do something with the recorded audio blob,
-        // like sending it to the server or playing it back.
-        audioChunks = [];
-    };
-
-    mediaRecorder.start();
-};
-
-const stopRecording = () => {
-    if (mediaRecorder.state === 'recording') {
-        mediaRecorder.stop();
-    }
-};
-
 onMounted(() => {
     control('start');
-    startRecording();
 });
 
 onUnmounted(() => {
     control('pause');
-    stopRecording();
     console.log('CountdownTimer component unmounted');
 });
 </script>
