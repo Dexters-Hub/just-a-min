@@ -7,7 +7,7 @@ import { useTopic } from '@/composables/useTopic';
 
 
 const { topicSubtitle,
-        updateRandomTopic
+        // updateRandomTopic
       } = useTopic();
 
 </script>
@@ -18,6 +18,6 @@ const { topicSubtitle,
         :subtitle="topicSubtitle"
         />
       <RouterLink to="/session"><BorderButton cta="Begin"/></RouterLink>
-      <BorderButton @click="updateRandomTopic" class="mt-8" cta="Random"/>
+      <!-- <BorderButton @click="updateRandomTopic" class="mt-8" cta="Random"/> -->
       
 </template>

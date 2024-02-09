@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
 import useControl from '@/composables/useControl';
+import WaveSurferRecorder from '@/components/WaveSurferRecorder.vue';
 
 const props = defineProps({
     initialTime: {
@@ -49,8 +50,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div>
+    <div class="flex flex-col justify-center items-center w-1/2">
         <p class="text-4xl font-normal ">{{ formatTime(countdown) }}</p>
+
+        <WaveSurferRecorder />
 
         <div class="flex justify-center mt-8 space-x-8">
             <button v-if="isPlaying" @click="control('pause')">P</button>

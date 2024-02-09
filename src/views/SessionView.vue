@@ -14,6 +14,7 @@ const handleCountdownEnd = () => {
 
 <template>
     <TextSection title="Time left"/>
-    <CountdownTimer :initialTime="5" :onCountdownEnd="handleCountdownEnd"/>
+    <CountdownTimer :initialTime="60" :onCountdownEnd="handleCountdownEnd"/>
+
     <!-- <RouterLink to="/feedback"><BorderButton cta="End"/></RouterLink> -->
 </template>
