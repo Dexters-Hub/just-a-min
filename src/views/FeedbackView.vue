@@ -4,7 +4,7 @@ import BorderButton from '@/components/BorderButton.vue';
 import MetricCard from '@/components/MetricCard.vue';
 import { RouterLink } from 'vue-router'
 
-const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+const getRandomInt = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 const randomWPM = getRandomInt(10, 30);
 const randomErrors = getRandomInt(0, 10);

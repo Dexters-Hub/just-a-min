@@ -1,11 +1,11 @@
 // useControl.js
 import { ref } from 'vue';
 
-export default function useControl(initialTime, onControlChange) {
+export default function useControl(initialTime: number, onControlChange: { (controlAction: string): void; (arg0: string): void; }) {
   const isPlaying = ref(false);
-  let interval;
+  let interval: number;
 
-  const control = (action) => {
+  const control = (action: string) => {
     if (action === 'start') {
       if (!isPlaying.value) {
         isPlaying.value = true;

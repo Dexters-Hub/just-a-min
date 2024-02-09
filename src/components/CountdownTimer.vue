@@ -3,13 +3,18 @@ import { ref, onMounted, onUnmounted } from 'vue';
 import useControl from '@/composables/useControl';
 
 const props = defineProps({
-    initialTime: Number,
-    onCountdownEnd: Function,
+    initialTime: {
+        type: Number,
+        required: true,
+    },
+    onCountdownEnd: {
+        type: Function,
+    },
 });
 
 const { isPlaying, control } = useControl(
     props.initialTime,
-    (controlAction) => {
+    (controlAction: string) => {
         if (controlAction === 'tick') {
             if (countdown.value > 0) {
                 countdown.value--;
@@ -27,10 +32,10 @@ const { isPlaying, control } = useControl(
 );
 
 const countdown = ref(props.initialTime);
-let mediaRecorder;
-let audioChunks = [];
+let mediaRecorder: MediaRecorder;
+let audioChunks: BlobPart[] = [];
 
-const formatTime = (seconds) => {
+const formatTime = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
     return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
